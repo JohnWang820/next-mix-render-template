@@ -6,19 +6,15 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "npm run build && node --test tests/rendered-html.test.mjs"
   },
   "dependencies": {
-    "@radix-ui/react-navigation-menu": "^1.2.14",
-    "@radix-ui/react-slot": "^1.2.3",
-    "class-variance-authority": "^0.7.1",
-    "clsx": "^2.1.1",
-    "lucide-react": "^0.540.0",
+    "@edgeone/pages-blob": "^0.0.18",
     "next": "15.5.25",
-    "nextjs-toploader": "^3.8.16",
+    "pixi.js": "^8.22.0",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "tailwind-merge": "^3.3.1"
+    "react-dom": "^18.3.1"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

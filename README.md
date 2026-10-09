@@ -1,140 +1,30 @@
-# EdgeOne Pages Next.js Hybrid Rendering Template
+# 共听空间 Demo
 
-A hybrid rendering demonstration project based on **EdgeOne Pages** and **Next.js 15**, showcasing SSR, ISR, SSG, Streaming, and other rendering strategies, as well as the use of Node Functions and Edge Functions.
+一个面向异地情侣的双人沉浸式共听 Demo。两个人选择形象与约会道具，在外滩江畔从黄昏待到霓虹亮起，并通过场景内点击完成坐下、依偎、点灯和道具互动；结束后会生成双方各自的约会日记。
 
-## ✨ Features
+## 技术栈
 
-- 🚀 **Hybrid Rendering Strategies** - Demonstrates SSR, ISR, SSG, Streaming, and other rendering methods
-- ⚡ **Modern Frontend** - Next.js 15 + React 18 + TypeScript
-- 🎨 **Aesthetic UI** - Tailwind CSS 4 + shadcn/ui component library
-- 🔧 **Out-of-the-Box** - Preconfigured development environment and build process
-- 📱 **Mobile-First** - Fully responsive design, supporting all devices
-- 🌐 **Edge Computing** - Supports Node Functions and Edge Functions
+- Next.js App Router
+- PixiJS 场景、角色与道具动画
+- EdgeOne Pages 部署与 Cloud Functions
+- EdgeOne Pages Blob 持久化空间、邀请、约会和日记状态
 
-## 🛠️ Technology Stack
-
-### Frontend
-- **Next.js 15.4.7** - React full-stack framework
-- **React 18.3.1** - User interface library
-- **TypeScript 5** - Type-safe JavaScript
-- **Tailwind CSS 4** - Utility-first CSS framework
-- **shadcn/ui** - Modern UI component library
-
-### Backend
-- **EdgeOne Pages** - Edge computing platform
-- **Node Functions** - Node.js runtime functions
-- **Edge Functions** - Edge runtime functions
-
-### Development Tools
-- **ESLint** - Code quality checking
-- **PostCSS** - CSS postprocessor
-- **Turbopack** - Fast build tool
-
-## 🚀 Quick Start
-
-### Environment Requirements
-
-- Node.js 18.0 or higher version
-- EdgeOne Pages account
-
-### Install Dependencies
+## 本地检查
 
 ```bash
-# Clone the project
-git clone <your-repo-url>
-cd next-mix-template
-
-# Install dependencies
 npm install
+npm test
 ```
 
-### Local Development
+Pages Blob 的自动认证只存在于 EdgeOne 运行环境，因此本地构建和静态测试可直接执行，完整双人数据流程请在 EdgeOne 部署地址验证。
 
-```bash
-# Start the development server
-edgeone pages dev
+## EdgeOne 部署
 
-# Access http://localhost:6699
-```
+仓库已连接 EdgeOne Pages，`main` 分支提交后会自动触发生产部署。项目配置保持：
 
-### Build
+- Framework preset: Next.js
+- Root directory: `./`
+- Build command: `npm run build`
+- Node.js: `22.11.0`
 
-```bash
-# Build the production version
-edgeone pages build
-```
-
-## 📚 Feature Demonstrations
-
-### Hybrid Rendering Strategies
-
-**SSR (Server-Side Rendering)**
-- Path: `/ssr`
-- Characteristics: Re-renders on the server for each request
-- Suitable for: Dynamic content and personalized pages
-
-**ISR (Incremental Static Regeneration)**
-- Path: `/isr`
-- Characteristics: Static generation + incremental updates
-- Suitable for: News or blog websites
-
-**SSG (Static Site Generation)**
-- Path: `/ssg`
-- Characteristics: Pre-generates all pages at build time
-- Suitable for: Corporate websites and static content
-
-**Streaming (Streaming Rendering)**
-- Path: `/streaming`
-- Characteristics: Gradually renders page content, enhancing user experience
-- Suitable for: Data-intensive pages and complex content
-
-### Server Functions
-
-**Node Functions**
-- Path: `/node-functions`
-- Characteristics: Runs code at Node.js runtime
-- Suitable for: Complex backend logic and data processing
-
-**Edge Functions**
-- Path: `/edge-functions`
-- Characteristics: Runs code at edge runtime
-- Suitable for: Real-time data processing and geolocation services
-
-## 🗄️ Project Structure
-
-```
-next-mix-template/
-├── src/                    # Source code directory
-│   ├── app/               # Next.js App Router
-│   │   ├── layout.tsx     # Root layout component
-│   │   ├── page.tsx       # Home page component
-│   │   ├── ssr/           # SSR demonstration pages
-│   │   ├── isr/           # ISR demonstration pages
-│   │   ├── ssg/           # SSG demonstration pages
-│   │   ├── streaming/     # Streaming demonstration pages
-│   │   ├── node-functions/# Node Functions demonstration pages
-│   │   ├── edge-functions/# Edge Functions demonstration pages
-│   │   ├── api/           # API routes
-│   │   └── globals.css    # Global styles
-│   ├── components/        # React components
-│   │   ├── ui/           # shadcn/ui component library
-│   │   ├── Header.tsx    # Page header component
-│   │   ├── Hero.tsx      # Hero section component
-│   │   ├── Features.tsx  # Features component
-│   │   └── FeatureCard.tsx # Feature card component
-│   └── lib/              # Utility functions
-├── public/               # Static resources
-├── package.json          # Project configuration
-├── next.config.ts        # Next.js configuration
-├── tailwind.config.ts    # Tailwind CSS configuration
-├── tsconfig.json         # TypeScript configuration
-└── components.json       # shadcn/ui configuration
-```
-
-## 📄 License
-
-This project uses the MIT License - View the [LICENSE](https://github.com/github/choosealicense.com/blob/gh-pages/_licenses/mit.txt) file for details.
-
-## 🚀 One-Click Deployment
-
-[![Deploy with EdgeOne Pages](https://cdnstatic.tencentcs.com/edgeone/pages/deploy.svg)](https://edgeone.ai/pages/new?from=github&template=next-mix-template)
+首次请求 `/api/space` 时，`@edgeone/pages-blob` 会自动创建名为 `gongting-space` 的存储，不需要手动填写数据库环境变量。

@@ -1,12 +1,5 @@
-import { PageLayout } from '@/components/layout'
-import Hero from '@/components/Hero'
-import Features from '@/components/Features'
+import SharedSpaceDemo from "./SharedSpaceDemo";
 
 export default function Home() {
-  return (
-    <PageLayout>
-      <Hero />
-      <Features />
-    </PageLayout>
-  )
+  return <SharedSpaceDemo />;
 }
